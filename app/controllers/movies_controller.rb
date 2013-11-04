@@ -12,10 +12,13 @@ class MoviesController < ApplicationController
   end
 
   def create
+    #  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FwzZexhwZZoiO4GO23kdGnWTcsozBwWtRbHqUpQctpo=", "title"=>"Apollo 13", "year"=>"2005", "director_id"=>"3", "commit"=>"Create Movie"}
     @movie = Movie.new
     @movie.title = params[:title]
     @movie.year = params[:year]
-    
+
+    @movie.director_id = params[:director_id]
+
     if @movie.save
       redirect_to movies_url
     else
@@ -31,7 +34,7 @@ class MoviesController < ApplicationController
     @movie = Movie.find_by(:id => params[:id])
     @movie.title = params[:title]
     @movie.year = params[:year]
-    
+
     if @movie.save
       redirect_to movies_url
     else

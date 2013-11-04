@@ -13,7 +13,15 @@
     <%= number_field_tag :year, @movie.year %>
   </div>
 
-  
+  <div>
+    <%= label_tag :director_id %><br />
+    <% directors = Director.all.order("name") %>
+
+    <%= select_tag "director_id",
+             options_from_collection_for_select(directors, :id, :name, @movie.director_id) %>
+</div>
+
+
   <div>
     <%= submit_tag "Update Movie" %>
   </div>

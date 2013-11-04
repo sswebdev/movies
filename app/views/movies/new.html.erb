@@ -16,6 +16,14 @@
 
 
   <div>
+    <%= label_tag :director_id %><br />
+    <% directors = Director.all.order("name") %>
+    <%= select_tag "director_id",
+                   options_from_collection_for_select(directors, :id, :name) %>
+  </div>
+
+
+  <div>
     <%= submit_tag "Create Movie" %>
   </div>
 <% end %>
