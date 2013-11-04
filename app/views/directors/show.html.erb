@@ -1,0 +1,25 @@
+<h1>Director #<%= @director.id %></h1>
+
+<p><%= link_to "Edit", edit_director_url(@director.id) %></p>
+
+<p>
+  <%= image_tag @director.image_url %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <p><%= @director.name %></p>
+</p>
+
+<p>
+  <b>DOB:</b>
+  <%= @director.dob %>
+</p>
+<p>
+  <b>Bio:</b>
+  <p><%= @director.bio %></p>
+</p>
+
+
+
+

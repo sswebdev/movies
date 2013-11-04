@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movies</title>
+  <%= stylesheet_link_tag "https://github.com/necolas/normalize.css/blob/master/normalize.css" %>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+    <header>
+       <h1><%= link_to "Starter Movie Database", root_url %></h1>
+      <nav>
+<!--         <%= link_to "Directors", directors_url %> |
+        <%= link_to "Movies", '#' %>
+ -->
+      </nav>
+
+    </header>
+
+  <div class="container">
+    <%= yield %>
+  </div>
+
+</body>
+</html>

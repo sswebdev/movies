@@ -1,0 +1,28 @@
+<p><%= link_to 'Add a New Director', new_director_url %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Photo</th>
+      <th>Name</th>
+      <th>Born</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @directors.each do |director| %>
+    <tr>
+      <td><%= link_to image_tag(director.image_url, width: "100px") %></td>
+      <td><%= link_to director.name, director_path(director) %></td>
+      <td><%= director.dob %></td>
+
+      <td><%= link_to 'Edit', edit_director_url(director) %></td>
+      <td><%= link_to 'Destroy', director_url(director), method: 'delete', data: { confirm: "Do you really want to delete this director?" } %></td>
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+

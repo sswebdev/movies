@@ -1,0 +1,30 @@
+<h1>New Director</h1>
+
+
+<%= form_tag(directors_url, method: 'post') do %>
+
+  <div>
+    <%= label_tag :name %><br />
+    <%= text_field_tag :name %>
+  </div>
+
+  <div>
+    <%= label_tag :bio %><br />
+    <%= text_area_tag :bio %>
+  </div>
+
+  <div>
+    <%= label_tag :image_url %><br />
+    <%= text_field_tag :image_url %>
+  </div>
+
+  <div>
+    <%= label_tag :dob, "Date of Birth" %><br />
+    <%= text_field_tag "director", "dob"  %>
+  </div>
+
+
+  <div>
+    <%= submit_tag "Create Director" %>
+  </div>
+<% end %>

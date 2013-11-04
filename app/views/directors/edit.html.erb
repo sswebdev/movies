@@ -1,0 +1,30 @@
+<h1>Editing Director #<%= @director.id %></h1>
+
+
+<%= form_tag(director_url(@director), method: 'patch') do %>
+
+  <div>
+    <%= label_tag :name %><br />
+    <%= text_field_tag :name, @director.name, size: 80 %>
+  </div>
+
+  <div>
+    <%= label_tag :bio %><br />
+    <%= text_area_tag :bio, @director.bio, rows: 5, cols: 80 %>
+  </div>
+
+  <div>
+    <%= label_tag :image_url, 'Image URL' %><br />
+    <%= text_field_tag :image_url, @director.image_url, size: 80 %>
+  </div>
+
+  <div>
+    <%= label_tag :dob, "DOB" %><br />
+    <%= text_field_tag :dob, @director.dob %>
+  </div>
+
+  <div>
+    <%= submit_tag "Update Director" %>
+  </div>
+
+<% end %>
