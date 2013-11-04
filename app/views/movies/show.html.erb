@@ -10,4 +10,5 @@
   <%= @movie.year %>
 </p>
 
-
+<% the_director = Director.find_by(id: @movie.director_id) %>
+<p>Directed By: <%= the_director.name %>, born <%= the_director.dob %></p>
