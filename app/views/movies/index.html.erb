@@ -1,0 +1,30 @@
+<h1>Movies</h1>
+
+<p><%= link_to 'Add a New Movie', new_movie_url %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @movies.each do |movie| %>
+    <tr>
+      <td><%= movie.title %></td>
+      <td><%= movie.year %></td>
+  
+      <td><%= link_to 'Show', movie_url(movie) %></td>
+      <td><%= link_to 'Edit', edit_movie_url(movie) %></td>
+      <td><%= link_to 'Destroy', movie_url(movie), method: 'delete', data: { confirm: "Do you really want to delete this movie?" } %></td>
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+

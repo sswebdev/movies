@@ -35,7 +35,7 @@ class DirectorsController < ApplicationController
     @director.name = params[:name]
     @director.bio = params[:bio]
     @director.image_url = params[:image_url]
-    @director.dob = Date.parse(params[:dob])
+    @director.dob = params[:dob]
 
     if @director.save
       redirect_to directors_url

@@ -11,13 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131104012936) do
+ActiveRecord::Schema.define(version: 20131104153626) do
 
   create_table "directors", force: true do |t|
     t.string "name"
     t.text   "bio"
     t.string "image_url"
     t.string "dob"
+  end
+
+  create_table "movies", force: true do |t|
+    t.string  "title"
+    t.integer "year"
   end
 
 end
