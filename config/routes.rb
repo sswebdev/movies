@@ -1,5 +1,22 @@
 Movies::Application.routes.draw do
 
+  # Routes for the Actor resource:
+  # CREATE
+  get '/actors/new', controller: 'actors', action: 'new', :as => 'new_actor'
+  post '/actors', controller: 'actors', action: 'create'
+
+  # READ
+  get '/actors', controller: 'actors', action: 'index'
+  get '/actors/:id', controller: 'actors', action: 'show', :as => 'actor'
+
+  # UPDATE
+  get '/actors/:id/edit', controller: 'actors', action: 'edit', :as => 'edit_actor'
+  patch '/actors/:id', controller: 'actors', action: 'update'
+
+  # DELETE
+  delete '/actors/:id', controller: 'actors', action: 'destroy'
+  #------------------------------
+
   # Routes for the Movie resource:
   # CREATE
   get '/movies/new', controller: 'movies', action: 'new', :as => 'new_movie'

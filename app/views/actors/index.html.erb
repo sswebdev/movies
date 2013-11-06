@@ -1,0 +1,28 @@
+<p><%= link_to 'Add a New Actor', new_actor_url %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Photo</th>
+      <th>Name</th>
+      <th>Born</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @actors.each do |actor| %>
+    <tr>
+      <td><%= link_to image_tag(actor.image_url, width: '100px'), actor_url(actor.id) %></td>
+      <td><%= link_to actor.name, actor_url(actor.id) %></td>
+      <td><%= actor.dob %></td>
+
+      <td><%= link_to 'Edit', edit_actor_url(actor) %></td>
+      <td><%= link_to 'Destroy', actor_url(actor), method: 'delete', data: { confirm: "Do you really want to delete this actor?" } %></td>
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+

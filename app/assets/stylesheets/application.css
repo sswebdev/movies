@@ -16,16 +16,17 @@ body { width: 960px; margin: 20px auto; font-family: "Helvetica Neue"; backgroun
 
 table { border-collapse: collapse; width: 100%;}
 table th { border-bottom: solid 2px #333; font-size: 24px; }
-table tr td { text-align: center; padding: 15px 0px; font-size: 18px;}
+table tr td { text-align: center; padding: 15px; font-size: 18px;}
 
 header {
   background: #0066cc;
   color: #FFF;
   padding: 10px 20px;
 }
-h1 { text-align: center; font-size: 48px;}
-header, header h1 a, header h1 a:visited { margin: 0px; text-align: center; font-size: 48px;}
-header a, header a:visited { color: #FFF; font-size: 18px;}
+
+h1 { text-align: center; font-size: 48px; margin: 0px;}
+header, header h1 a, header h1 a:visited { margin: 0px; padding: 0px; text-align: center; font-size: 48px;}
+header a, header a:visited { color: #FFF; font-size: 24px; }
 
 .container { background: #FFF; padding: 10px 10px; margin: 0px;}
 
@@ -33,3 +34,10 @@ label { font-weight: bold; }
 p, input, textarea { margin: 0px 0px 10px 0px; font-size: 19px; line-height: 29px; color: #555; padding: 10px;}
 a, a:visited { color: #0066cc; font-weight: bold; text-decoration: none; border-bottom: 1px dotted #444; }
 form div { margin-bottom: 24px}
+
+td img { box-shadow: 4px 4px 4px #777; border-radius: 20px;}
+
+article h3 { text-align: left;  margin: 0; padding: 10px;}
+.byline { font-style: italic; color: #666; font-size: 16px; padding-left: 8px; font-weight: normal;}
+article p { margin: 0; padding: 0px 10px;}
+article { border-top: 2px solid #888; padding: 22px 0px;}

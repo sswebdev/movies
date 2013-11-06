@@ -1,0 +1,31 @@
+<h1>Editing Actor #<%= @actor.id %></h1>
+
+
+<%= form_tag(actor_url(@actor), method: 'patch') do %>
+
+  <div>
+    <%= label_tag :name %><br />
+    <%= text_field_tag :name, @actor.name %>
+  </div>
+
+  <div>
+    <%= label_tag :image_url %><br />
+    <%= text_field_tag :image_url, @actor.image_url %>
+  </div>
+
+  <div>
+    <%= label_tag :dob %><br />
+    <%= text_field_tag :dob, @actor.dob %>
+  </div>
+
+  <div>
+    <%= label_tag :bio %><br />
+    <%= text_area_tag :bio, @actor.bio %>
+  </div>
+
+  
+  <div>
+    <%= submit_tag "Update Actor" %>
+  </div>
+
+<% end %>
