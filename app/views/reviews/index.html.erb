@@ -1,0 +1,32 @@
+<h1>Reviews</h1>
+
+<p><%= link_to 'Add a New Review', new_review_url %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Rating</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @reviews.each do |review| %>
+    <tr>
+      <td><%= review.title %></td>
+      <td><%= review.body %></td>
+      <td><%= review.rating %></td>
+  
+      <td><%= link_to 'Show', review_url(review) %></td>
+      <td><%= link_to 'Edit', edit_review_url(review) %></td>
+      <td><%= link_to 'Destroy', review_url(review), method: 'delete', data: { confirm: "Do you really want to delete this review?" } %></td>
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+

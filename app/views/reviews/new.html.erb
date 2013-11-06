@@ -1,0 +1,33 @@
+<h1>New Review</h1>
+
+
+<%= form_tag(reviews_url, method: 'post') do %>
+
+  <div>
+    <%= label_tag :movie_id %>
+    <% movies = Movie.order("title").limit(1000) %>
+    <%= select_tag "movie_id",
+                   options_from_collection_for_select(movies, :id, :title) %>
+
+  </div>
+
+  <div>
+    <%= label_tag :title %><br />
+    <%= text_field_tag :title %>
+  </div>
+
+  <div>
+    <%= label_tag :body %><br />
+    <%= text_area_tag :body %>
+  </div>
+
+  <div>
+    <%= label_tag :rating %><br />
+    <%= number_field_tag :rating %>
+  </div>
+
+
+  <div>
+    <%= submit_tag "Create Review" %>
+  </div>
+<% end %>

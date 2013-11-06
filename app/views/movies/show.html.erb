@@ -1,6 +1,12 @@
 <h1>Movie #<%= @movie.id %></h1>
 
-<p>User Rating: <%= ("&#9733;" * 7 + "&#9734;" * 3).html_safe %> based on <%= link_to "4 reviews", '#reviews' %></p>
+<% avg_rating = Review.where(movie_id: @movie.id).average(:rating).to_i %>
+
+<p>
+  User Rating: <%= ("&#9733;" * avg_rating + "&#9734;" * (10 - avg_rating)).html_safe %>
+  based on
+  <%= link_to "#{pluralize(Review.where(movie_id: @movie.id).count, 'review')}", '#reviews' %>
+</p>
 
 <p><%= link_to "Edit This Entry", edit_movie_url(@movie.id) %></p>
 <p>
@@ -22,26 +28,24 @@
 <p>Directed By: <%= the_director.name %>, born <%= the_director.dob %></p>
 
 <h2 id="reviews">Reviews</h2>
-<p><%= link_to "Write a Review", '#' %></p>
+<p><%= link_to "Write a Review", new_review_url %></p>
 
-<article>
-  <h3>Pretty good! <span class="byline">2 days ago</span></h3>
-  <p>Not as good as Apollo 13, but what movie is?  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </p>
-</article>
+<% reviews = Review.where(movie_id: @movie.id) %>
+<% reviews.each do |review| %>
+  <article>
+    <h3>
+      <%= ("&#9733;" * review.rating + "&#9734;" * (10 - review.rating)).html_safe %>
+      <%= review.title %>
+      <span class="byline"><%= time_ago_in_words(review.created_at) %> ago</span>
+    </h3>
+    <p><%= review.body %></p>
+  </article>
+<% end %>
 
-<article>
-  <h3>Skip It... <span class="byline">About 1 week ago</span></h3>
-  <p>See Gravity instead.  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </p>
-</article>
+
+
+
+
+
+
+

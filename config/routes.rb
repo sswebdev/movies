@@ -1,5 +1,22 @@
 Movies::Application.routes.draw do
 
+  # Routes for the Review resource:
+  # CREATE
+  get '/reviews/new', controller: 'reviews', action: 'new', :as => 'new_review'
+  post '/reviews', controller: 'reviews', action: 'create'
+
+  # READ
+  get '/reviews', controller: 'reviews', action: 'index'
+  get '/reviews/:id', controller: 'reviews', action: 'show', :as => 'review'
+
+  # UPDATE
+  get '/reviews/:id/edit', controller: 'reviews', action: 'edit', :as => 'edit_review'
+  patch '/reviews/:id', controller: 'reviews', action: 'update'
+
+  # DELETE
+  delete '/reviews/:id', controller: 'reviews', action: 'destroy'
+  #------------------------------
+
   # Routes for the Actor resource:
   # CREATE
   get '/actors/new', controller: 'actors', action: 'new', :as => 'new_actor'
