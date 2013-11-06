@@ -1,11 +1,9 @@
 <h1>Movie #<%= @movie.id %></h1>
 
-<% avg_rating = Review.where(movie_id: @movie.id).average(:rating).to_i %>
-
 <p>
-  User Rating: <%= ("&#9733;" * avg_rating + "&#9734;" * (10 - avg_rating)).html_safe %>
+  User Rating: <%= ("&#9733;" * @movie.average_rating + "&#9734;" * (10 - @movie.average_rating)).html_safe %>
   based on
-  <%= link_to "#{pluralize(Review.where(movie_id: @movie.id).count, 'review')}", '#reviews' %>
+  <%= link_to "#{pluralize(@movie.reviews.count, 'review')}", '#reviews' %>
 </p>
 
 <p><%= link_to "Edit This Entry", edit_movie_url(@movie.id) %></p>
@@ -23,15 +21,12 @@
   <%= image_tag @movie.image_url %>
 </p>
 
-
-<% the_director = Director.find_by(id: @movie.director_id) %>
-<p>Directed By: <%= the_director.name %>, born <%= the_director.dob %></p>
+<p>Directed By: <%= @movie.director.name %>, born <%= @movie.director.dob %></p>
 
 <h2 id="reviews">Reviews</h2>
 <p><%= link_to "Write a Review", new_review_url(movie_id: @movie.id) %></p>
 
-<% reviews = Review.where(movie_id: @movie.id) %>
-<% reviews.each do |review| %>
+<% @movie.reviews.each do |review| %>
   <article>
     <h3>
       <%= ("&#9733;" * review.rating + "&#9734;" * (10 - review.rating)).html_safe %>
