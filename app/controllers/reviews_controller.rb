@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @movie = Movie.find(params[:movie_id])
   end
 
   def create

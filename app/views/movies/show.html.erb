@@ -28,7 +28,7 @@
 <p>Directed By: <%= the_director.name %>, born <%= the_director.dob %></p>
 
 <h2 id="reviews">Reviews</h2>
-<p><%= link_to "Write a Review", new_review_url %></p>
+<p><%= link_to "Write a Review", new_review_url(movie_id: @movie.id) %></p>
 
 <% reviews = Review.where(movie_id: @movie.id) %>
 <% reviews.each do |review| %>
