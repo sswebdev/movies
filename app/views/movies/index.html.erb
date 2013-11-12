@@ -1,5 +1,5 @@
 <p><%= link_to 'Add a New Movie', new_movie_url %></p>
 
 <% @movies.each do |movie| %>
-  <%= link_to image_tag(movie.image_url, width: '100px'), movie_url(movie.id) %>
+  <%= link_to image_tag(movie.image_url, width: '154px'), movie_url(movie.id) %>
 <% end %>
