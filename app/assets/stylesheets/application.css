@@ -12,23 +12,25 @@
  *= require_tree .
  */
 
-body { width: 960px; margin: 20px auto; font-family: "Helvetica Neue"; background: #CCC;}
+body { min-width: 960px; margin: 20px auto; font-family: "Helvetica Neue"; background: #E1E1E1;}
 
 table { border-collapse: collapse; width: 100%;}
 table th { border-bottom: solid 2px #333; font-size: 24px; }
 table tr td { text-align: center; padding: 15px; font-size: 18px;}
 
 header {
-  background: #0066cc;
+  background: #B9090B;
   color: #FFF;
-  padding: 10px 20px;
+  padding: 6px 20px 6px 20px;
+  margin: 0px 10px 0px 10px;
 }
 
-h1 { text-align: center; font-size: 48px; margin: 0px;}
-header, header h1 a, header h1 a:visited { margin: 0px; padding: 0px; text-align: center; font-size: 48px;}
+h1 { text-align: center; font-size: 44px; margin: 0px;}
+h1.title { float: left; text-transform: uppercase; }
+header, header h1 a, header h1 a:visited { margin: 0px; text-align: center; font-size: 48px;}
 header a, header a:visited { color: #FFF; font-size: 24px; }
 
-.container { background: #FFF; padding: 10px 10px; margin: 0px;}
+.container { background: #E1E1E1; padding: 10px 10px; margin: 0px;}
 
 label { font-weight: bold; }
 p, input, textarea { margin: 0px 0px 10px 0px; font-size: 19px; line-height: 29px; color: #555; padding: 10px;}
@@ -41,3 +43,19 @@ article h3 { text-align: left;  margin: 0; padding: 10px;}
 .byline { font-style: italic; color: #666; font-size: 16px; padding-left: 8px; font-weight: normal;}
 article p { margin: 0; padding: 0px 10px;}
 article { border-top: 2px solid #888; padding: 22px 0px;}
+
+.poster-container {
+  display: inline-block;
+  padding: 8px;
+  height: 238px;
+  width: 160px;
+}
+
+.ribbon {
+  background: #000;
+  height: 100%;
+  max-width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
