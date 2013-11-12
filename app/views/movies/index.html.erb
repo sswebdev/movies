@@ -1,5 +1,13 @@
 <p><%= link_to 'Add a New Movie', new_movie_url %></p>
 
+<h3>Random Movies</h3>
+<div class="ribbon">
+  <% @movies.shuffle.take(15).each do |movie| %>
+    <%= link_to image_tag(movie.image_url, class: "poster-container"), movie_url(movie.id) %>
+  <% end %>
+</div>
+
+<h3>Movies A to Z</h3>
 <% @movies.each do |movie| %>
-  <%= link_to image_tag(movie.image_url, width: '154px'), movie_url(movie.id) %>
+  <%= link_to image_tag(movie.image_url, class: "poster-container"), movie_url(movie.id) %>
 <% end %>
