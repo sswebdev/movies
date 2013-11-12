@@ -1,5 +1,7 @@
 Movies::Application.routes.draw do
 
+  root 'movies#index'
+
   # Routes for the Review resource:
   # CREATE
   get '/reviews/new', controller: 'reviews', action: 'new', :as => 'new_review'
@@ -51,8 +53,6 @@ Movies::Application.routes.draw do
   delete '/movies/:id', controller: 'movies', action: 'destroy'
   #------------------------------
 
-  root 'directors#index'
-
   # Routes for the Director resource:
   # CREATE
   get '/directors/new', controller: 'directors', action: 'new', :as => 'new_director'
@@ -69,4 +69,5 @@ Movies::Application.routes.draw do
   # DELETE
   delete '/directors/:id', controller: 'directors', action: 'destroy'
   #------------------------------
+
 end
