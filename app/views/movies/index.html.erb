@@ -1,33 +1,5 @@
 <p><%= link_to 'Add a New Movie', new_movie_url %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Photo</th>
-      <th>Title</th>
-      <th>Year</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-  <% @movies.each do |movie| %>
-    <tr>
-      <td><%= link_to image_tag(movie.image_url, width: '100px'), movie_url(movie.id) %></td>
-      <td>
-        <p><%= link_to movie.title, movie_url(movie.id) %></p>
-        <% rating = Review.where(movie_id: movie.id).average(:rating).to_i %>
-        <%= ("&#9733;" * rating).html_safe %><%= ("&#9734;" * (10-rating)).html_safe %>
-      </td>
-
-      <td><%= movie.year %></td>
-
-      <td><%= link_to 'Edit', edit_movie_url(movie) %></td>
-      <td><%= link_to 'Destroy', movie_url(movie), method: 'delete', data: { confirm: "Do you really want to delete this movie?" } %></td>
-
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-
+<% @movies.each do |movie| %>
+  <%= link_to image_tag(movie.image_url, width: '100px'), movie_url(movie.id) %>
+<% end %>

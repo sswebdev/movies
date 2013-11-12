@@ -1,12 +1,5 @@
-<h1>Movie #<%= @movie.id %></h1>
+<%= image_tag @movie.image_url %>
 
-<p>
-  User Rating: <%= ("&#9733;" * @movie.average_rating + "&#9734;" * (10 - @movie.average_rating)).html_safe %>
-  based on
-  <%= link_to "#{pluralize(@movie.reviews.count, 'review')}", '#reviews' %>
-</p>
-
-<p><%= link_to "Edit This Entry", edit_movie_url(@movie.id) %></p>
 <p>
   <b>Title:</b>
   <%= @movie.title %>
@@ -17,30 +10,33 @@
   <%= @movie.year %>
 </p>
 
-<p>
-  <%= image_tag @movie.image_url %>
-</p>
-
 <p>Directed By: <%= @movie.director.name %>, born <%= @movie.director.dob %></p>
+
+<p>
+  <%= link_to "Edit", edit_movie_url(@movie.id) %> |
+  <%= link_to 'Delete', movie_url(@movie), method: 'delete', data: { confirm: "Do you really want to delete this movie?" } %>
+</p>
 
 <h2 id="reviews">Reviews</h2>
 <p><%= link_to "Write a Review", new_review_url(movie_id: @movie.id) %></p>
 
-<% @movie.reviews.each do |review| %>
-  <article>
-    <h3>
-      <%= ("&#9733;" * review.rating + "&#9734;" * (10 - review.rating)).html_safe %>
-      <%= review.title %>
-      <span class="byline"><%= time_ago_in_words(review.created_at) %> ago</span>
-    </h3>
-    <p><%= review.body %></p>
-  </article>
+<% if @movie.reviews.present? %>
+
+  <% @movie.reviews.each do |review| %>
+    <article>
+      <h3>
+        <%= ("&#9733;" * review.rating + "&#9734;" * (10 - review.rating)).html_safe %>
+        <%= review.title %>
+        <span class="byline"><%= time_ago_in_words(review.created_at) %> ago</span>
+      </h3>
+      <p><%= review.body %></p>
+    </article>
+  <% end %>
+
+  <p>
+    User Rating: <%= ("&#9733;" * @movie.average_rating + "&#9734;" * (10 - @movie.average_rating)).html_safe %>
+    based on
+    <%= link_to "#{pluralize(@movie.reviews.count, 'review')}", '#reviews' %>
+  </p>
+
 <% end %>
-
-
-
-
-
-
-
-
