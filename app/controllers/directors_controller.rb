@@ -21,11 +21,12 @@ class DirectorsController < ApplicationController
   end
 
   def create
+    # {"utf8"=>"✓", "authenticity_token"=>"9kcSoSSo8zCNwjFiRGWF2Q8neqxh3y7FitSDaIQwBW0=", "director"=>{"name"=>"Raghu", "bio"=>"Dude who's always right, dang it!", "image_url"=>"", "dob"=>""}, "commit"=>"Create Director"}
     @director = Director.new
-    @director.name = params[:name]
-    @director.bio = params[:bio]
-    @director.image_url = params[:image_url]
-    @director.dob = params[:dob]
+    @director.name = params["director"]["name"]
+    @director.bio = params["director"]["bio"]
+    @director.image_url = params[:director][:image_url]
+    @director.dob = params["director"][:dob]
 
     if @director.save
       redirect_to directors_url
