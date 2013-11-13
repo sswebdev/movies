@@ -1,0 +1,19 @@
+<table>
+  <thead>
+    <tr>
+      <th>Photo</th>
+      <th>Name</th>
+      <th>Born</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @directors.each do |d| %>
+    <%= render "director", director: d %>
+  <% end %>
+  </tbody>
+
+
+</table>
