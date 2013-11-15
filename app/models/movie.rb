@@ -1,15 +1,16 @@
 class Movie < ActiveRecord::Base
 
-  def reviews
-    Review.where(movie_id: self.id)
-  end
+  validates_presence_of :title
+
+  # validates :title, :presence => true
+
+  has_many :roles, :class_name => "Role", :foreign_key => :movie_id
+  has_many :reviews, :class_name => "Review", :foreign_key => :movie_id
+  belongs_to :director, :class_name => "Director", :foreign_key => :director_id
 
   def average_rating
     reviews.average(:rating)
   end
 
-  def director
-    Director.find_by(id: self.director_id)
-  end
 
 end

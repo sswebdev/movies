@@ -1,0 +1,30 @@
+<h1>Users</h1>
+
+<p><%= link_to 'Add a New User', new_user_url %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Password</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.password %></td>
+  
+      <td><%= link_to 'Show', user_url(user) %></td>
+      <td><%= link_to 'Edit', edit_user_url(user) %></td>
+      <td><%= link_to 'Destroy', user_url(user), method: 'delete', data: { confirm: "Do you really want to delete this user?" } %></td>
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+

@@ -1,5 +1,11 @@
 <h1>Director #<%= @director.id %></h1>
 
+<ul>
+  <% @director.cinemas.each do |movie| %>
+    <li><%= link_to movie.title, movie_url(movie.id) %></li>
+  <% end %>
+</ul>
+
 <p><%= link_to "Edit", edit_director_url(@director.id) %></p>
 
 <p>

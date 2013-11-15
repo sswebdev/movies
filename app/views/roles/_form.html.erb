@@ -1,0 +1,25 @@
+<%= form_for @role do |f| %>
+
+
+  <% if @role.movie_id.present? %>
+    <%= f.hidden_field :movie_id %>
+  <% else %>
+    <div>
+      <%= f.label :movie_id %><br>
+      <%= f.collection_select :movie_id, Movie.order(:title), :id, :title %>
+    </div>
+  <% end %>
+  <div>
+    <%= f.label :actor_id %><br>
+    <%= f.collection_select :actor_id, Actor.order(:name), :id, :actor_name_dob %>
+  </div>
+
+  <div>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

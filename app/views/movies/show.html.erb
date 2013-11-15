@@ -12,6 +12,18 @@
 
 <p>Directed By: <%= @movie.director.name %>, born <%= @movie.director.dob %></p>
 
+<%= link_to "Add a Role", new_role_url(:movie_id => @movie.id) %>
+
+<ul>
+<% @movie.roles.each do |role| %>
+  <li>
+      <%= link_to role.actor.name, actor_url(role.actor_id) %>
+      plays the role of
+      <%= role.name %>
+  </li>
+<% end %>
+</ul>
+
 <p>
   <%= link_to "Edit", edit_movie_url(@movie.id) %> |
   <%= link_to 'Delete', movie_url(@movie), method: 'delete', data: { confirm: "Do you really want to delete this movie?" } %>

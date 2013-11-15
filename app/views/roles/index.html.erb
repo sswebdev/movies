@@ -1,0 +1,32 @@
+<h1>Roles</h1>
+
+<p><%= link_to 'Add a New Role', new_role_url %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Actor</th>
+      <th>Movie</th>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @roles.each do |role| %>
+    <tr>
+      <td><%= link_to role.actor_id, actor_url(role.actor_id) %></td>
+      <td><%= link_to role.movie_id, movie_url(role.movie_id) %></td>
+      <td><%= role.name %></td>
+
+      <td><%= link_to 'Show', role_url(role) %></td>
+      <td><%= link_to 'Edit', edit_role_url(role) %></td>
+      <td><%= link_to 'Destroy', role_url(role), method: 'delete', data: { confirm: "Do you really want to delete this role?" } %></td>
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
