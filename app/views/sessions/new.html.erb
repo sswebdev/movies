@@ -1,0 +1,14 @@
+<h1>Sign In</h1>
+
+
+<%= form_tag sessions_url do %>
+
+  <%= label_tag :email, "What's your email address?" %>
+  <%= text_field_tag :email, nil, size: 80 %>
+  <br>
+  <%= label_tag :password, "What's the secret word?" %>
+  <%= password_field_tag :password %>
+  <br>
+  <%= submit_tag "Let Me In" %>
+
+<% end %>

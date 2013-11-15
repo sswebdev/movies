@@ -1,7 +1,10 @@
 Movies::Application.routes.draw do
 
-  resources :users
+  get "/login" => 'sessions#new'
+  get "/logout" => 'sessions#destroy'
+  post "/sessions" => 'sessions#create'
 
+  resources :users
   resources :roles
 
   root 'movies#index'
