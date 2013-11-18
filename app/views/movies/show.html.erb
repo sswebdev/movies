@@ -30,7 +30,9 @@
 </p>
 
 <h2 id="reviews">Reviews</h2>
-<p><%= link_to "Write a Review", new_review_url(movie_id: @movie.id) %></p>
+<% if session[:user_id] %>
+  <p><%= link_to "Write a Review", new_review_url(movie_id: @movie.id) %></p>
+<% end %>
 
 <% if @movie.reviews.present? %>
 

@@ -12,15 +12,17 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
     if user.present?
-      if user.password == params[:password]
+      if user.authenticate(params[:password])
         # Yay!
         session[:user_id] = user.id
         redirect_to root_url, notice: "Hello, #{user.email}"
       else
-        redirect_to root_url, notice: "Bad password."
+        flash.now[:notice] = "Please try again."
+        render 'new'
       end
     else
-      redirect_to root_url, notice: "Unknown username."
+      flash.now[:notice] = "Please try again."
+      render 'new'
     end
   end
 end

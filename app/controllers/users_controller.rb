@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -17,9 +18,11 @@ class UsersController < ApplicationController
     @user = User.new
     @user.email = params[:user][:email]
     @user.password = params[:user][:password]
-    
+    @user.password_confirmation = params[:user][:password_confirmation]
+
     if @user.save
-      redirect_to users_url
+      session[:user_id] = @user.id  # sign in!
+      redirect_to movies_url
     else
       render 'new'
     end
@@ -31,7 +34,7 @@ class UsersController < ApplicationController
   def update
     @user.email = params[:user][:email]
     @user.password = params[:user][:password]
-    
+
     if @user.save
       redirect_to users_url
     else
@@ -45,6 +48,12 @@ class UsersController < ApplicationController
   end
 
 private
+
+  def require_login
+    if params[:id] != session[:user_id]
+      redirect_to root_url, notice: "Nice try!"
+    end
+  end
 
   def set_user
     @user = User.find(params[:id])
