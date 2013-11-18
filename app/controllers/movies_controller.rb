@@ -1,7 +1,17 @@
 class MoviesController < ApplicationController
 
+  # GET /movies
   def index
     @movies = Movie.order(:title).limit(100)
+
+    respond_to do |format|
+      format.html do
+        render "index"
+      end
+      format.json do
+        render json: @movies
+      end
+    end
   end
 
   def show
