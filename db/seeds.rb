@@ -45,3 +45,18 @@ actor_hashes.each do |actor_hash|
   a.save
 end
 puts "There are now #{Actor.count} rows in the actors table."
+
+roles_file = Rails.root.join('db', 'roles.json').to_s
+role_hashes = JSON.parse(open(roles_file).read)
+
+Role.destroy_all
+role_hashes.each do |role_hash|
+  r = Role.new
+  r.name = role_hash["name"]
+  m = Movie.find_by_title(role_hash["movie"])
+  a = Actor.find_by_name(role_hash["actor"])
+  r.movie_id = m.id if m.present?
+  r.actor_id = a.id if a.present?
+  r.save
+end
+puts "There are now #{Role.count} rows in the roles table."
