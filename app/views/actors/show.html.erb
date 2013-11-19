@@ -1,23 +1,14 @@
-<h1>Actor #<%= @actor.id %></h1>
+<h1><%= @actor.name %></h1>
 
 <p>
-  <b>Name:</b>
-  <%= @actor.name %>
+  <%= image_tag @actor.image_url,  width: 350 %>
 </p>
 
 <p>
-  <b>Image url:</b>
-  <%= @actor.image_url %>
+  <b>Born on <%= @actor.dob %></b>
 </p>
 
-<p>
-  <b>Dob:</b>
-  <%= @actor.dob %>
-</p>
-
-<p>
-  <b>Bio:</b>
-  <%= @actor.bio %>
-</p>
+<p><b>Biography</b></p>
+<p><%= @actor.bio %></p>
 
 
