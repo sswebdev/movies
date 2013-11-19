@@ -17,8 +17,11 @@
         <%= link_to "Actors", actors_url %>
         <%= link_to "Directors", directors_url %>
         <div class="user-nav">
-          <%= link_to "Sign In", '/login' %>
-          <%= link_to "Sign Out", '/logout' %>
+          <%= form_tag movies_url, method: "get" do %>
+            <input type="text" placeholder="Search" class="nav-search"></input>
+            <%= link_to "Sign In", '/login' %>
+            <%= link_to "Sign Out", '/logout' %>
+          <% end %>
         </div>
       </nav>
     </header>
