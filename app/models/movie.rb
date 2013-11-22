@@ -8,7 +8,9 @@ class Movie < ActiveRecord::Base
   has_many :reviews, :class_name => "Review", :foreign_key => :movie_id
   belongs_to :director, :class_name => "Director", :foreign_key => :director_id
 
+  scope :seventies, -> { where(year: 1970..1979) }
   scope :eighties, -> { where(year: 1980..1989) }
+  scope :ninties, -> { where(year: 1990..1999) }
 
   def average_rating
     reviews.average(:rating)
