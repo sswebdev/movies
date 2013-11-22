@@ -7,9 +7,23 @@
   <% end %>
 </div>
 
-<h3>80s Movies</h3>
+<h3>70s Movies</h3>
+<div class="ribbon">
+  <% @movies.seventies.shuffle.take(15).each do |movie| %>
+    <%= link_to image_tag(movie.image_url, class: "poster-container"), movie_url(movie.id) %>
+  <% end %>
+</div>
+
+<h3>Eighties Movies</h3>
 <div class="ribbon">
   <% @movies.eighties.shuffle.take(15).each do |movie| %>
+    <%= link_to image_tag(movie.image_url, class: "poster-container"), movie_url(movie.id) %>
+  <% end %>
+</div>
+
+<h3>90s Movies</h3>
+<div class="ribbon">
+  <% @movies.ninties.shuffle.take(15).each do |movie| %>
     <%= link_to image_tag(movie.image_url, class: "poster-container"), movie_url(movie.id) %>
   <% end %>
 </div>
