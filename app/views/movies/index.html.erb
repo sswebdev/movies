@@ -14,7 +14,7 @@
   <% end %>
 </div>
 
-<h3>Wooohoooo! Movies</h3>
+<h3>Eighties Movies</h3>
 <div class="ribbon">
   <% @movies.eighties.shuffle.take(15).each do |movie| %>
     <%= link_to image_tag(movie.image_url, class: "poster-container"), movie_url(movie.id) %>
