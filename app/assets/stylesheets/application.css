@@ -59,3 +59,15 @@ article { border-top: 2px solid #888; padding: 22px 0px;}
   overflow-y: hidden;
   white-space: nowrap;
 }
+
+.user-nav {
+  float: right;
+}
+
+.nav-search {
+  border: none;
+  padding: 4px;
+  position: relative;
+  top: -7px;
+  width: 300px;
+}

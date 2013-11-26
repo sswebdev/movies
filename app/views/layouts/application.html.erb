@@ -13,13 +13,18 @@
 
   <body>
     <header>
-      <h1 class="title"><%= link_to "Starter Movie Database", root_url %></h1>
+      <h1 class="title"><%= link_to "SMDB", root_url %></h1>
       <nav>
-        <%= link_to "Sign In", '/login' %>
-        <%= link_to "Sign Out", '/logout' %>
         <%= link_to "Movies", movies_url %>
         <%= link_to "Actors", actors_url %>
         <%= link_to "Directors", directors_url %>
+        <div class="user-nav">
+          <%= form_tag movies_url, method: "get" do %>
+            <input type="text" placeholder="Search" class="nav-search"></input>
+            <%= link_to "Sign In", '/login' %>
+            <%= link_to "Sign Out", '/logout' %>
+          <% end %>
+        </div>
       </nav>
     </header>
 
