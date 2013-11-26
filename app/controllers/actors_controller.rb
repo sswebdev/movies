@@ -1,7 +1,7 @@
 class ActorsController < ApplicationController
 
   def index
-    @actors = Actor.limit(100)
+    @actors = Actor.page(params[:page]).per(5)
   end
 
   def show
