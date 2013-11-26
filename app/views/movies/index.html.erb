@@ -1,5 +1,7 @@
 <p><%= link_to 'Add a New Movie', new_movie_url %></p>
 
+<%= link_to "See a Random Actor", movie_actor_url(199, 2810) %>
+
 <h3>Random Movies</h3>
 <div class="ribbon">
   <% @movies.shuffle.take(15).each do |movie| %>

@@ -9,7 +9,13 @@ class SessionsController < ApplicationController
     redirect_to root_url, notice: "See ya!"
   end
 
+  def auth_hash
+    request.env['omniauth.auth']
+  end
+
   def create
+    logger.debug auth_hash["info"]
+
     user = User.find_by(email: params[:email])
     if user.present?
       if user.authenticate(params[:password])

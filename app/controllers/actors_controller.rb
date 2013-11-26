@@ -1,7 +1,13 @@
 class ActorsController < ApplicationController
 
+  # /actors
+  # /movies/199/actors
   def index
-    @actors = Actor.page(params[:page]).per(5)
+    if params[:movie_id].present?
+      @actors = Movie.find(params[:movieid]).actors.page(params[:page]).per(5)
+    else
+      @actors = Actor.order('name').page(params[:page]).per(5)
+    end
   end
 
   def show

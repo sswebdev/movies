@@ -21,7 +21,7 @@
         <div class="user-nav">
           <%= form_tag movies_url, method: "get" do %>
             <input type="text" placeholder="Search" class="nav-search"></input>
-            <%= link_to "Sign In", '/login' %>
+            <%= link_to "Sign In", '/auth/twitter' %>
             <%= link_to "Sign Out", '/logout' %>
           <% end %>
         </div>
